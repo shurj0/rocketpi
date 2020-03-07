@@ -26,7 +26,7 @@ def launch(target_apogee):
     if rocket.fill_drain_open:
         rocket.close_fill_drain()
     # Countdown
-    for i in range(10,1,-1):
+    for i in range(10,0,-1):
         print(i)
         sleep(1)
     rocket.open_main()
