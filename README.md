@@ -6,7 +6,7 @@ It is designed to run on a Raspberry Pi. Executing the main.py script prompts th
 
 The Rocket class allows for the implementation of mechanisms easily. As such, while this program is still very much for testing purposes only, extending it to implement the final version can be done quite simply. 
 
-Undervalue target_apogee by 500 ft for optimal results, as the calculation I use gives me a result of about 500 ft less than the data from the OpenRocket simulation.
+Undervalue target_apogee by 500 ft for optimal results, as the calculation I use gives me a result of about 500 ft less than the data from the OpenRocket simulation. 
 
 ## TODO:
 
