@@ -63,7 +63,5 @@ class Rocket:
         intermediate = 1 + (C * (current_velocity ** 2)) / (m * g)
         max_height = (m / (2*C)) * log(intermediate)
 
-        apogee = self.x + max_height
-
-        return apogee
+        return self.x + max_height
     
