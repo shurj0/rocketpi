@@ -4,9 +4,9 @@ from Rocket import Rocket
 
 # Units are in metric, need to convert to imperial probably
 
-mass = 45 
-cd = 0.05
-target_apogee = 3300
+mass = 43.06 # 95 lbs
+cd = 0.005 
+target_apogee = 3048 # 10,000 ft
 
 # Create an instance of the rocket object, and set pins
 # motor_right_pin = GPIO17
@@ -34,7 +34,7 @@ def launch(target_apogee):
 
     # Sets the altitude, velocity and acceleration in the rocket object and runs the predApogee() function. 
     # If the apogee returned by that function is greater than the target_apogee, the main valve is closed, and the loop is exited.
-    # For optimal results, undervalue the target_apogee by around 300, as the algorithm tends to overshoot a little by around that amount
+    # For optimal results, undervalue the target_apogee by around 500
 
     while rocket.main_valve_open:
         sensor_values = sensorReader()
@@ -44,6 +44,9 @@ def launch(target_apogee):
         predicted_apogee = rocket.predApogee(rocket.v)
         if predicted_apogee > target_apogee:
             rocket.close_main()
+        # exits loop if the rocket never reaches the target_velocity
+        if rocket.v < 0:
+            break
 
     return predicted_apogee
 
