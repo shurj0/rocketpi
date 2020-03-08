@@ -63,7 +63,7 @@ def launch(target_apogee):
         # exits loop if the rocket never reaches the target_velocity
         if rocket.v < 0:
             break
-        sleep(1)
+        sleep(0.1)
 
     return predicted_apogee
 
