@@ -65,3 +65,5 @@ while True:
         final_prediction = launch(target_apogee)
         print("Shutting down engine. Rocket should reach an apogee of {}.".format(final_prediction))
         break
+    if command == "exit":
+        break
