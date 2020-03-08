@@ -9,6 +9,9 @@ class Rocket:
         self.motor_right = gpiozero.DigitalOutputDevice(motor_right_pin)
         self.motor_left = gpiozero.DigitalOutputDevice(motor_left_pin)
         self.solenoid = gpiozero.DigitalOutputDevice(solenoid_pin)
+        self.motor_left.off()
+        self.motor_right.off()
+        self.solenoid.off()
         self.main_valve_open = False
         self.fill_drain_open = False
 
