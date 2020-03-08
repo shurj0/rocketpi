@@ -13,7 +13,7 @@ target_apogee = 3048 # 10,000 ft
 # motor_left_pin = GPIO18
 # solenoid_pin = GPIO22
 
-rocket = Rocket(mass, cd, 17, 18, 22)
+rocket = Rocket(mass, cd, 17, 18, 23)
 
 # TODO: Define the sensor reader function here
 # The function should return the values in the form of a tuple
