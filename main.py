@@ -1,6 +1,7 @@
 import gpiozero
 from time import sleep
 from Rocket import Rocket
+import csv
 
 # Units are in metric, need to convert to imperial probably
 
@@ -9,9 +10,9 @@ cd = 0.005
 target_apogee = 3048 # 10,000 ft
 
 # Create an instance of the rocket object, and set pins
-# motor_right_pin = GPIO17
-# motor_left_pin = GPIO18
-# solenoid_pin = GPIO22
+# motor_right_pin = GPIO15
+# motor_left_pin = GPIO21
+# solenoid_pin = GPIO23
 
 rocket = Rocket(mass, cd, 15, 21, 23)
 
@@ -19,8 +20,22 @@ rocket = Rocket(mass, cd, 15, 21, 23)
 # The function should return the values in the form of a tuple
 # (altitude, velocity, acceleration)
 
+def read_file(filename):
+    with open(filename, 'r') as fp:
+        reader = csv.reader(fp)
+        # Creates a list of tuples, ignoring comments which begin with "#" in the csv file
+        data = [ ( float(line[0]) , float(line[1]) * 0.3048, float(line[2]) * 0.3048, float(line[3]) *0.3048 ) for line in reader if line[0][0] != "#" ]
+    return data
+
+data = read_file("SimData.csv")
+
+testVar = 0
+
 def sensorReader():
-    return (0,0,0)
+    global testVar
+    sensor_data = data[testVar]
+    testVar += 1
+    return sensor_data[1], sensor_data[2], sensor_data[3]
 
 def launch(target_apogee):
     if rocket.fill_drain_open:
