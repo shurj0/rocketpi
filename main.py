@@ -57,11 +57,13 @@ def launch(target_apogee):
         rocket.set_velocity(sensor_values[1])
         rocket.set_acceleration(sensor_values[2])
         predicted_apogee = rocket.predApogee(rocket.v)
+        print(sensor_values, predicted_apogee)
         if predicted_apogee > target_apogee:
             rocket.close_main()
         # exits loop if the rocket never reaches the target_velocity
         if rocket.v < 0:
             break
+        sleep(1)
 
     return predicted_apogee
 
