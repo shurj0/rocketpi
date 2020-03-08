@@ -66,7 +66,4 @@ while True:
         print("Shutting down engine. Rocket should reach an apogee of {}.".format(final_prediction))
         break
     if command == "exit":
-        gpiozero.DigitalOutputDevice(17).close()
-        gpiozero.DigitalOutputDevice(18).close()
-        gpiozero.DigitalOutputDevice(23).close()
         break
