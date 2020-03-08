@@ -1,0 +1,22 @@
+// Initialization
+SAP 4, 0, 102400		//set Maximum positioning speed [pps]
+SGP 77, 0, 1			//set Auto start mode
+
+MainLoop:
+	WAIT TICKS, 0, 5	//50ms delay before it checks for inputs, 
+	GIO 1, 0			//check input 1, load to accumulator
+	JC NZ, OPENVALVE	//jump to OPENVALVE if accumulator is not zero
+	GIO 2, 0			//check input 2, load to accumulator
+	JC NZ, CLOSEVALVE	//jump to CLOSEVALVE if accumulator is not zero
+	JA MainLoop		//infinite loop
+
+OPENVALVE:
+	MVP ABS, 0, 307200		//move position to 307200 absolute
+	WAIT POS, 0, 0		//wait till at position
+	JA MainLoop			//jump back to mainloop
+
+CLOSEVALVE:
+	MVP ABS, 0, 0			//move position to 0 absolute
+	WAIT POS, 0, 0		//wait till at position
+	JA MainLoop			//jump back to mainloop
+
